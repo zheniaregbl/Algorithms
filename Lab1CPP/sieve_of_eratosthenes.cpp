@@ -3,9 +3,11 @@
 
 #include "array.h"
 
-Array<int> create_sieve(size_t size)
+typedef Array<int> IntArray;
+
+IntArray create_sieve(size_t size)
 {
-    Array<int> array(size);
+    IntArray array(size);
 
     for (size_t i = 0; i < size; ++i)
     {
@@ -29,7 +31,7 @@ Array<int> create_sieve(size_t size)
     return array;
 }
 
-void move_to_front(Array<int>& array)
+void move_to_front(IntArray& array)
 {
     size_t count = 0;
 
@@ -49,7 +51,7 @@ void move_to_front(Array<int>& array)
     }
 }
 
-void print_array(const Array<int>& array) {
+void print_array(const IntArray& array) {
     for (size_t i = 0; i < array.size(); ++i)
     {
         std::cout << array.get(i) << ' ';
@@ -74,7 +76,7 @@ int main(int argc, char** argv)
         return 1;
     };
 
-    Array<int> array = create_sieve(size);
+    IntArray array = create_sieve(size);
     move_to_front(array);
     print_array(array);
 

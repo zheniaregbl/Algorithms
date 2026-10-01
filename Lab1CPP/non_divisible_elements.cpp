@@ -2,7 +2,9 @@
 #include <fstream>
 #include "array.h"
 
-bool read_array(std::ifstream& input, Array<int>& array)
+typedef Array<int> IntArray;
+
+bool read_array(std::ifstream& input, IntArray& array)
 {
     for (size_t i = 0; i < array.size(); ++i)
     {
@@ -17,7 +19,7 @@ bool read_array(std::ifstream& input, Array<int>& array)
     return true;
 }
 
-bool divisible_by_other(const Array<int>& array, size_t index)
+bool divisible_by_other(const IntArray& array, size_t index)
 {
     int value = array.get(index);
 
@@ -33,7 +35,7 @@ bool divisible_by_other(const Array<int>& array, size_t index)
     return false;
 }
 
-void print_not_divisible(const Array<int>& array)
+void print_not_divisible(const IntArray& array)
 {
     for (size_t i = 0; i < array.size(); ++i)
     {
@@ -62,7 +64,7 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    Array<int> array(size);
+    IntArray array(size);
     if (!read_array(fin, array))
     {
         std::cerr << "Cannot read array elements" << std::endl;

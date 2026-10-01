@@ -10,10 +10,7 @@ public:
     // copy constructor
     Array(const Array &a) : m_size(a.m_size), m_data(new Data[a.m_size])
     {
-        for (size_t i = 0; i < m_size; ++i)
-        {
-            m_data[i] = a.m_data[i];
-        }
+        copy_from(a);
     }
 
     // assignment operator
@@ -27,10 +24,7 @@ public:
                 m_size = a.m_size;
                 m_data = new Data[m_size];
             }
-            for (size_t i = 0; i < m_size; ++i)
-            {
-                m_data[i] = a.m_data[i];
-            }
+            copy_from(a);
         }
 
         return *this;
@@ -71,6 +65,14 @@ public:
     }
 
 private:
+    void copy_from(const Array& a)
+    {
+        for (size_t i = 0; i < m_size; ++i)
+        {
+            m_data[i] = a.m_data[i];
+        }
+    }
+
     size_t m_size;
     Data* m_data;
 };
